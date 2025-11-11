@@ -16,6 +16,10 @@ for (const [route, target] of Object.entries(apiRoutes)) {
   // TODO: Use the `createProxyMiddleware` to forward requests.
   // The configuration should include the `target` and `changeOrigin: true`.
   // Apply this middleware to the `app` for each route.
+  app.use(route, createProxyMiddleware({
+    target: target,
+    changeOrigin: true
+  }));
 }
 
 const PORT = 8000;
